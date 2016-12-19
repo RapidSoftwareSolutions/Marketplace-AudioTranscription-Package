@@ -1,0 +1,141 @@
+{
+    "createCategorizationTask": {
+        "url": "https://api.scaleapi.com/v1/task/categorize",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "String|instruction": "$instruction",
+            "String|attachmentType": "$attachment_type",
+            "File|attachment": "$attachment",
+            "JSON|categories": "$categories",
+            "String|urgency": "urgency",
+            "JSON|categoryIds": "category_ids",
+            "Boolean|allowMultiple": "allowMultiple",
+            "JSON|metadata": "metadata"
+        }
+    },
+    "createTranscriptionTask": {
+        "url": "https://api.scaleapi.com/v1/task/transcription",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "String|instruction": "$instruction",
+            "String|attachmentType": "$attachment_type",
+            "File|attachment": "$attachment",
+            "JSON|fields": "$fields",
+            "String|urgency": "urgency",
+            "JSON|metadata": "metadata"
+        }
+    },
+    "createPhoneCallTask": {
+        "url": "https://api.scaleapi.com/v1/task/phonecall",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|instruction": "$instruction",
+            "String|phoneNumber": "$phone_number",
+            "String|script": "$script",
+            "String|entityName": "$entity_name",
+            "String|urgency": "urgency",
+            "String|attachmentType": "attachmentType",
+            "File|attachment": "attachment",
+            "String|fields": "fields",
+            "JSON|choices": "choices",
+            "JSON|metadata": "metadata"
+        }
+    },
+    "createComparisonTask": {
+        "url": "https://api.scaleapi.com/v1/task/comparison",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "String|instruction": "$instruction",
+            "String|attachmentType": "attachmentType",
+            "File|attachment": "attachment",
+            "String|urgency": "urgency",
+            "String|fields": "fields",
+            "JSON|choices": "choices",
+            "JSON|metadata": "metadata"
+        }
+    },
+    "createAnnotationTask": {
+        "url": "https://api.scaleapi.com/v1/task/annotation",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "JSON|objectsToAnnotate": "$objects_to_annotate",
+            "File|attachment": "$attachment",
+            "Boolean|withLabels": "with_labels",
+            "JSON|examples": "examples",
+            "String|urgency": "urgency",
+            "String|instruction": "instruction",
+            "JSON|metadata": "metadata"
+        },
+        "values": {
+            "attachment_type": "image"
+        }
+    },
+    "createDataCollectionTask": {
+        "url": "https://api.scaleapi.com/v1/task/datacollection",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "String|instruction": "$instruction",
+            "String|attachmentType": "attachmentType",
+            "File|attachment": "attachment",
+            "JSON|fields": "$fields",
+            "String|urgency": "urgency",
+            "String|metadata": "metadata"
+        }
+    },
+    "createAudioTranscriptionTask": {
+        "url": "https://api.scaleapi.com/v1/task/transcription",
+        "method": "This endpoint creates a transcription task. In this task, one of our workers will read an attachment and arbitrarily transcribe any information you’d like. Example use cases could be transcribing information from PDFs, manually scraping a web page for information, etc.",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "String|instruction": "instruction",
+            "File|attachment": "$attachment",
+            "String|verbatim": "$verbatim",
+            "String|urgency": "urgency",
+            "JSON|metadata": "metadata"
+        },
+        "values": {
+            "attachment_type": "audio"
+        }
+    },
+    "getSingleTask": {
+        "url": "https://api.scaleapi.com/v1/task/:taskId",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|taskId": "$!taskId"
+        }
+    },
+    "cancelTask": {
+        "url": "https://api.scaleapi.com/v1/task/:taskId/cancel",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|taskId": "$!taskId"
+        }
+    },
+    "getTasks": {
+        "url": "https://api.scaleapi.com/v1/tasks",
+        "method": "GET",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|startTime": "start_time",
+            "String|endTime": "end_time",
+            "String|status": "status",
+            "String|type": "type",
+            "Number|limit": "limit",
+            "Number|offset": "offset"
+        }
+    }
+}

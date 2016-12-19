@@ -1,0 +1,616 @@
+{
+  "package": "AudioTranscription",
+  "tagline": "AudioTranscription API Package",
+  "description": "",
+  "image": "http://logo.clearbit.com/scaleapi.com",
+  "keywords": [
+    "API"
+  ],
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-AudioTranscription-Package",
+  "accounts": {
+    "domain": "https://www.scaleapi.com/audio-transcription?ref=rapidapi",
+    "credentials": [
+      "apiKey"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "createCategorizationTask",
+      "description": "This endpoint creates a categorization task. In this task, one of our workers will view the attachment and choose a category for it according to the instruction. You may allow multiple categories to be chosen by setting allow_multiple to true. Example use cases are spam detection, copyright detection, product categorization, etc.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme http:// or https://) of the callback when the task is completed.",
+          "required": true
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to categorize the item. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": true
+        },
+        {
+          "name": "attachmentType",
+          "type": "String",
+          "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
+          "required": true
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "The attachment to be categorized. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be FILE a URL pointing to the attachment.",
+          "required": true
+        },
+        {
+          "name": "categories",
+          "type": "JSON",
+          "info": "An array of strings for the categories which you’d like the object to be sorted between.",
+          "required": true
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "Default if `day`. A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time.",
+          "required": false
+        },
+        {
+          "name": "categoryIds",
+          "type": "JSON",
+          "info": "An optional dictionary where the keys are the optional ids, and the values are the category values provided in categories.",
+          "required": false
+        },
+        {
+          "name": "allowMultiple",
+          "type": "Boolean",
+          "info": "Default is `false`. Determines whether you allow multiple categories to be chosen for the attachment",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "JSON",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createTranscriptionTask",
+      "description": "This endpoint creates a transcription task. In this task, one of our workers will read an attachment and arbitrarily transcribe any information you’d like. Example use cases could be transcribing information from PDFs, manually scraping a web page for information, etc.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.",
+          "required": true
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to transcribe the attachment. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": true
+        },
+        {
+          "name": "attachmentType",
+          "type": "String",
+          "info": "One of `image` or `pdf`. Describes what type of file the attachment is.",
+          "required": true
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "Should be a FILE or URL pointing to the attachment.",
+          "required": true
+        },
+        {
+          "name": "fields",
+          "type": "JSON",
+          "info": "A dictionary corresponding to the fields to be transcribed. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
+          "required": true
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "JSON",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createPhoneCallTask",
+      "description": "This endpoint creates a phonecall task. In this task, one of our workers will call the specified phone number and follow the instructions. Potential use cases could be making reservations or appointments, confirming reservations, asking for contact numbers or emails, etc.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to complete the phone call. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": true
+        },
+        {
+          "name": "phoneNumber",
+          "type": "String",
+          "info": "The phone number which will be called by our worker. Should include a country code (+1 for US numbers).",
+          "required": true
+        },
+        {
+          "name": "script",
+          "type": "String",
+          "info": "A script to be shown the the worker as they make the phone call. Your script will greatly impact the quality of the results you receive.",
+          "required": true
+        },
+        {
+          "name": "entityName",
+          "type": "String",
+          "info": "The name of the entity which corresponds to the person or business of the phone number.",
+          "required": true
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.",
+          "required": false
+        },
+        {
+          "name": "attachmentType",
+          "type": "String",
+          "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
+          "required": false
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.",
+          "required": false
+        },
+        {
+          "name": "fields",
+          "type": "String",
+          "info": "A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
+          "required": false
+        },
+        {
+          "name": "choices",
+          "type": "JSON",
+          "info": "An array of strings for the choices to be given to the worker. They will choose one of these in accordance with your instruction.",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "JSON",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createComparisonTask",
+      "description": "This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.",
+          "required": true
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to compare the attachments. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": true
+        },
+        {
+          "name": "attachmentType",
+          "type": "String",
+          "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
+          "required": false
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.",
+          "required": false
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.",
+          "required": false
+        },
+        {
+          "name": "fields",
+          "type": "String",
+          "info": "A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
+          "required": false
+        },
+        {
+          "name": "choices",
+          "type": "JSON",
+          "info": "An array of strings for the choices to be given to the worker. One of choices or fields must be specified.",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "JSON",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createAnnotationTask",
+      "description": "This endpoint creates a annotation task. In this task, one of our Scalers view the given image and draw bounding boxes around the specified objects, returning the positions and sizes of these boxes.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.",
+          "required": true
+        },
+        {
+          "name": "objectsToAnnotate",
+          "type": "JSON",
+          "info": "An array of strings describing which objects you’d like bounding boxes to be drawn around. Each string should be singular and self-descriptive (ex: “cat”, “street sign”, “potato”). You may include at most 6 objects.",
+          "required": true
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "A Image file or URL to the image you’d like to be annotated with bounding boxes.",
+          "required": true
+        },
+        {
+          "name": "withLabels",
+          "type": "Boolean",
+          "info": "Specifies whether you’d like labels for each bounding box in the response. Each label will be a member of the `objectsToAnnotate` array.",
+          "required": false
+        },
+        {
+          "name": "examples",
+          "type": "JSON",
+          "info": "A list of examples. Each example requires a correct boolean indicating whether it is a correct or incorrect example and an image URL to the example image. Optionally, provide an explanation for the example explaining why it is correct or incorrect.",
+          "required": false
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "A string describing the urgency of the response. One of immediate, day, or week, where immediate is a one-hour response time.",
+          "required": false
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to draw the bounding boxes. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "JSON",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createDataCollectionTask",
+      "description": "This endpoint creates a datacollection task. In this task, one of our workers will try to find some information through the internet, following the instructions that you provide. Example use cases could be finding the product page of a particular product on Amazon, or trying to find the email of a particular person given their name and position.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.",
+          "required": true
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to draw the bounding boxes. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": true
+        },
+        {
+          "name": "attachmentType",
+          "type": "String",
+          "info": "One of `text`, `image`, `website`. Describes what type of file the attachment is.",
+          "required": false
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.",
+          "required": false
+        },
+        {
+          "name": "fields",
+          "type": "JSON",
+          "info": "A dictionary corresponding to the fields of information to be collected. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
+          "required": true
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time. Default is `day`.",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "String",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "createAudioTranscriptionTask",
+      "description": "This endpoint creates an audiotranscription task. In this task, we will transcribe the speech from the audio file you specify into plaintext.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.",
+          "required": true
+        },
+        {
+          "name": "instruction",
+          "type": "String",
+          "info": "A markdown-enabled string explaining how to draw the bounding boxes. You can use markdown to show example images, give structure to your instructions, and more.",
+          "required": false
+        },
+        {
+          "name": "attachment",
+          "type": "File",
+          "info": "An audio file or URL pointing to the audio file attachment.",
+          "required": true
+        },
+        {
+          "name": "verbatim",
+          "type": "String",
+          "info": "Specifies whether or not to include non-words (ex: “um”, “hm”) in the transcript. Default is false.",
+          "required": true
+        },
+        {
+          "name": "urgency",
+          "type": "String",
+          "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "JSON",
+          "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTask",
+      "description": "This endpoint retrieves a specific task.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "The id of the task to retrieve",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "cancelTask",
+      "description": "This endpoint cancels a task so that it will not be completed. You may only cancel pending tasks, and the endpoint will return a 500 error code if you attempt to cancel a completed task.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "taskId",
+          "type": "String",
+          "info": "The id of the task to cancel",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    },
+    {
+      "name": "getTasks",
+      "description": "This is a paged endpoint retrieves a list of your tasks. The tasks will be returned in descending order based on `createdAt` time. The pagination is based on the `limit` and offset `parameters`, which determine the page size and how many results to skip.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Scale Application Key.",
+          "required": true
+        },
+        {
+          "name": "startTime",
+          "type": "String",
+          "info": "ISO 8601 Date. The minimum value of `createdAt` for tasks to be returned.",
+          "required": false
+        },
+        {
+          "name": "endTime",
+          "type": "String",
+          "info": "The maximum value of `createdAt` for tasks to be returned.",
+          "required": false
+        },
+        {
+          "name": "status",
+          "type": "String",
+          "info": "The status of the task - can be: `completed`, `pending`, or `canceled`.",
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "info": "The type of the task - can be: `transcription`, `categorization`, `phonecall`, `comparison`, `annotation`, `datacollection`, or any other task type. ",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "A number between 1 and 100, the maximum number of results to display per page.",
+          "required": false
+        },
+        {
+          "name": "offset",
+          "type": "Number",
+          "info": "The number of results to skip, for showing the next page.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "success",
+          "info": "Success"
+        },
+        {
+          "name": "error",
+          "info": "Error"
+        }
+      ]
+    }
+  ]
+}
