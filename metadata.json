@@ -165,6 +165,12 @@
           "required": true
         },
         {
+          "name": "callbackUrl",
+          "type": "String",
+          "info": "The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.",
+          "required": true
+        },
+        {
           "name": "instruction",
           "type": "String",
           "info": "A markdown-enabled string explaining how to complete the phone call. You can use markdown to show example images, give structure to your instructions, and more.",

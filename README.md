@@ -1,4 +1,4 @@
-# AudioTranscription Package
+createPhoneCallTask# AudioTranscription Package
 
 * Domain: https://www.scaleapi.com/audio-transcription?ref=rapidapi
 * Credentials: apiKey
@@ -14,7 +14,7 @@ This endpoint creates a categorization task. In this task, one of our workers wi
 |----------------|------------|----------
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme http:// or https://) of the callback when the task is completed.
-| instruction    | String     | A markdown-enabled string explaining how to categorize the item. You can use markdown to show example images, give structure to your instructions, and more.
+| instruction    | String     | A markdown-enacreatePhoneCallTaskbled string explaining how to categorize the item. You can use markdown to show example images, give structure to your instructions, and more.
 | attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
 | attachment     | File       | The attachment to be categorized. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be FILE a URL pointing to the attachment.
 | categories     | JSON       | An array of strings for the categories which you’d like the object to be sorted between.
@@ -43,6 +43,7 @@ This endpoint creates a phonecall task. In this task, one of our workers will ca
 | Field          | Type       | Description
 |----------------|------------|----------
 | apiKey         | credentials| Scale Application Key.
+| callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to complete the phone call. You can use markdown to show example images, give structure to your instructions, and more.
 | phoneNumber    | String     | The phone number which will be called by our worker. Should include a country code (+1 for US numbers).
 | script         | String     | A script to be shown the the worker as they make the phone call. Your script will greatly impact the quality of the results you receive.

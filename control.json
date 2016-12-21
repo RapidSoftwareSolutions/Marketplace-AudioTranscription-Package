@@ -34,6 +34,7 @@
         "method": "POST",
         "args": {
             "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
             "String|instruction": "$instruction",
             "String|phoneNumber": "$phone_number",
             "String|script": "$script",
