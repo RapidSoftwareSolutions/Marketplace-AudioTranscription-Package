@@ -63,7 +63,7 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 | callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to compare the attachments. You can use markdown to show example images, give structure to your instructions, and more.
 | attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
-| attachment     | File       | The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.
+| attachments    | JSON       | The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.
 | urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
 | fields         | String     | A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
 | choices        | JSON       | An array of strings for the choices to be given to the worker. One of choices or fields must be specified.

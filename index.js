@@ -26,7 +26,7 @@ for(let func in control) {
         parseUri: true,
         hasSkip:  true,
         query:    {},
-        debug:    true
+        //debug:    true
     };
 
     let {
@@ -38,6 +38,7 @@ for(let func in control) {
     } = control[func];
 
     app.post(`/api/${PACKAGE_NAME}/${func}`, _(function* (req, res) {
+        console.log(func)
         let response;
         let opts = {};
         let r    = {

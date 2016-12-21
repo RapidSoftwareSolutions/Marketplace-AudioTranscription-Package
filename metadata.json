@@ -265,8 +265,8 @@
           "required": false
         },
         {
-          "name": "attachment",
-          "type": "File",
+          "name": "attachments",
+          "type": "JSON",
           "info": "The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.",
           "required": false
         },
