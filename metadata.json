@@ -214,7 +214,7 @@
         },
         {
           "name": "fields",
-          "type": "String",
+          "type": "JSON",
           "info": "A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
           "required": false
         },
@@ -268,13 +268,13 @@
           "name": "attachmentType",
           "type": "String",
           "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
-          "required": false
+          "required": true
         },
         {
           "name": "attachments",
           "type": "JSON",
-          "info": "The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.",
-          "required": false
+          "info": "An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.",
+          "required": true
         },
         {
           "name": "urgency",
@@ -284,7 +284,7 @@
         },
         {
           "name": "fields",
-          "type": "String",
+          "type": "JSON",
           "info": "A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
           "required": false
         },
@@ -408,13 +408,13 @@
           "name": "attachmentType",
           "type": "String",
           "info": "One of `text`, `image`, `website`. Describes what type of file the attachment is.",
-          "required": false
+          "required": true
         },
         {
           "name": "attachment",
           "type": "File",
           "info": "The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.",
-          "required": false
+          "required": true
         },
         {
           "name": "fields",
@@ -430,7 +430,7 @@
         },
         {
           "name": "metadata",
-          "type": "String",
+          "type": "JSON",
           "info": "A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.",
           "required": false
         }
@@ -448,7 +448,7 @@
     },
     {
       "name": "createAudioTranscriptionTask",
-      "description": "This endpoint creates an audiotranscription task. In this task, we will transcribe the speech from the audio file you specify into plaintext.",
+      "description": "This endpoint creates an annotation task. In this task, we will transcribe the speech from the audio file you specify into plaintext.",
       "args": [
         {
           "name": "apiKey",
@@ -476,9 +476,9 @@
         },
         {
           "name": "verbatim",
-          "type": "String",
+          "type": "Boolean",
           "info": "Specifies whether or not to include non-words (ex: “um”, “hm”) in the transcript. Default is false.",
-          "required": true
+          "required": false
         },
         {
           "name": "urgency",
@@ -579,7 +579,7 @@
         {
           "name": "endTime",
           "type": "String",
-          "info": "The maximum value of `createdAt` for tasks to be returned.",
+          "info": "ISO 8601 Date. The maximum value of `createdAt` for tasks to be returned.",
           "required": false
         },
         {
