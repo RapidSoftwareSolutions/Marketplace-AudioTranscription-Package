@@ -87,6 +87,7 @@ This endpoint creates a phonecall task. In this task, one of our workers will ca
 #### `choices` field example:
 ```json
 "choices": ["Yes", "No"]
+```
 
 #### `fields` field example:
 ```json
