@@ -1,11 +1,11 @@
 # AudioTranscription Package
 
-* Domain: https://www.scaleapi.com/audio-transcription?ref=rapidapi
+* Domain: https://www.scaleapi.com/audio-transcription
 * Credentials: apiKey
 
 ## How to get credentials: 
-0. Item one 
-1. Item two 
+0. Login to your [Scale API dashboard](https://dashboard.scaleapi.com/dashboard)
+1. Copy and save your `TESTAPI KEY` or `LIVEAPI KEY` for production.
 
 ## AudioTranscription.createCategorizationTask
 This endpoint creates a categorization task. In this task, one of our workers will view the attachment and choose a category for it according to the instruction. You may allow multiple categories to be chosen by setting allow_multiple to true. Example use cases are spam detection, copyright detection, product categorization, etc.
