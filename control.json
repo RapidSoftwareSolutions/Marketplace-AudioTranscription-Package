@@ -96,7 +96,7 @@
     },
     "createAudioTranscriptionTask": {
         "url": "https://api.scaleapi.com/v1/task/transcription",
-        "method": "This endpoint creates a transcription task. In this task, one of our workers will read an attachment and arbitrarily transcribe any information you’d like. Example use cases could be transcribing information from PDFs, manually scraping a web page for information, etc.",
+        "method": "POST",
         "args": {
             "credentials|apiKey": "!$apiKey",
             "String|callbackUrl": "$callback_url",
