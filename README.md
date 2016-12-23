@@ -64,6 +64,7 @@ This endpoint creates a transcription task. In this task, one of our workers wil
 "metadata": {
 	"key": "value"
 }
+```
 
 ## AudioTranscription.createPhoneCallTask
 This endpoint creates a phonecall task. In this task, one of our workers will call the specified phone number and follow the instructions. Potential use cases could be making reservations or appointments, confirming reservations, asking for contact numbers or emails, etc.
@@ -92,7 +93,7 @@ This endpoint creates a phonecall task. In this task, one of our workers will ca
 "metadata": {
 	"key": "value"
 }
-
+```
 ## AudioTranscription.createComparisonTask
 This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.
 
@@ -124,7 +125,7 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 "metadata": {
 	"key": "value"
 }
-
+```
 ## AudioTranscription.createAnnotationTask
 This endpoint creates a annotation task. In this task, one of our Scalers view the given image and draw bounding boxes around the specified objects, returning the positions and sizes of these boxes.
 
@@ -160,7 +161,11 @@ This endpoint creates a annotation task. In this task, one of our Scalers view t
 #### `metadata` field example:
 ```json
 "metadata": {
-	"key": "value"N
+	"key": "value"
+}
+```
+
+## AudioTranscription.createDataCollectionTask
 This endpoint creates a datacollection task. In this task, one of our workers will try to find some information through the internet, following the instructions that you provide. Example use cases could be finding the product page of a particular product on Amazon, or trying to find the email of a particular person given their name and position.
 
 | Field          | Type       | Description
@@ -183,7 +188,7 @@ This endpoint creates a datacollection task. In this task, one of our workers wi
 "metadata": {
 	"key": "value"
 }
-
+```
 ## AudioTranscription.createAudioTranscriptionTask
 This endpoint creates an audiotranscription task. In this task, we will transcribe the speech from the audio file you specify into plaintext.
 
@@ -202,6 +207,7 @@ This endpoint creates an audiotranscription task. In this task, we will transcri
 "metadata": {
 	"key": "value"
 }
+```
 
 ## AudioTranscription.getSingleTask
 This endpoint retrieves a specific task.
