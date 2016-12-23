@@ -1,11 +1,11 @@
-createPhoneCallTask# AudioTranscription Package
+# AudioTranscription Package
 
 * Domain: https://www.scaleapi.com/audio-transcription?ref=rapidapi
 * Credentials: apiKey
 
 ## How to get credentials: 
-0. Login to your [Scale Dashboard](https://dashboard.scaleapi.com). 
-1. Copy and save your `API KEY`.
+0. Item one 
+1. Item two 
 
 ## AudioTranscription.createCategorizationTask
 This endpoint creates a categorization task. In this task, one of our workers will view the attachment and choose a category for it according to the instruction. You may allow multiple categories to be chosen by setting allow_multiple to true. Example use cases are spam detection, copyright detection, product categorization, etc.
@@ -14,7 +14,7 @@ This endpoint creates a categorization task. In this task, one of our workers wi
 |----------------|------------|----------
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme http:// or https://) of the callback when the task is completed.
-| instruction    | String     | A markdown-enacreatePhoneCallTaskbled string explaining how to categorize the item. You can use markdown to show example images, give structure to your instructions, and more.
+| instruction    | String     | A markdown-enabled string explaining how to categorize the item. You can use markdown to show example images, give structure to your instructions, and more.
 | attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
 | attachment     | File       | The attachment to be categorized. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be FILE a URL pointing to the attachment.
 | categories     | JSON       | An array of strings for the categories which you’d like the object to be sorted between.

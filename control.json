@@ -91,7 +91,7 @@
             "File|attachment": "attachment",
             "JSON|fields": "$fields",
             "String|urgency": "urgency",
-            "String|metadata": "metadata"
+            "JSON|metadata": "metadata"
         }
     },
     "createAudioTranscriptionTask": {
