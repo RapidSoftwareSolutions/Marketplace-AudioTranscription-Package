@@ -95,7 +95,7 @@
         }
     },
     "createAudioTranscriptionTask": {
-        "url": "https://api.scaleapi.com/v1/task/transcription",
+        "url": "https://api.scaleapi.com/v1/task/audiotranscription",
         "method": "POST",
         "args": {
             "credentials|apiKey": "!$apiKey",
