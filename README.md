@@ -132,7 +132,7 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 }
 ```
 ## AudioTranscription.createAnnotationTask
-This endpoint creates a annotation task. In this task, one of our Scalers view the given image and draw bounding boxes around the specified objects, returning the positions and sizes of these boxes.
+This endpoint creates an annotation task. In this task, one of our Scalers view the given image and draw bounding boxes around the specified objects, returning the positions and sizes of these boxes.
 
 | Field                | Type       | Description
 |----------------------|------------|----------
