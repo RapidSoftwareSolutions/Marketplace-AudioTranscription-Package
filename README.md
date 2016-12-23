@@ -58,6 +58,8 @@ This endpoint creates a transcription task. In this task, one of our workers wil
 #### `fields` field example:
 ```json
 "fields": ["Field1", "Field2"]
+or
+"fields": {"Field1":"First field description", "Field2":"Second field description"}
 ```
 #### `metadata` field example:
 ```json
@@ -91,7 +93,11 @@ This endpoint creates a phonecall task. In this task, one of our workers will ca
 
 #### `fields` field example:
 ```json
-"fields": ["Field1", "Field2"]
+"fields": ["Field1", "Field2"] 
+or 
+"fields": {"Field1":"First field description", "Field2":"Second field description"}
+
+
 ```
 #### `metadata` field example:
 ```json
@@ -187,6 +193,8 @@ This endpoint creates a datacollection task. In this task, one of our workers wi
 #### `fields` field example:
 ```json
 "fields": ["Field1", "Field2"]
+or
+"fields": {"Field1":"First field description", "Field2":"Second field description"}
 ```
 #### `metadata` field example:
 ```json
