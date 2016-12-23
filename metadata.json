@@ -448,7 +448,7 @@
     },
     {
       "name": "createAudioTranscriptionTask",
-      "description": "This endpoint creates an annotation task. In this task, we will transcribe the speech from the audio file you specify into plaintext.",
+      "description": "This endpoint creates an audiotranscription task. In this task, we will transcribe the speech from the audio file you specify into plaintext.",
       "args": [
         {
           "name": "apiKey",
