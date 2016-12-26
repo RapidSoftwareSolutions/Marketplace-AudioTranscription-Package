@@ -105,7 +105,7 @@ or
 	"key": "value"
 }
 ```
-## AudioTranscription.сreateComparisonTaskByFields
+## AudioTranscription.createComparisonTaskByFields
 This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.
 
 | Field          | Type       | Description
@@ -138,7 +138,7 @@ or
 	"key": "value"
 }
 ```
-## AudioTranscription.сreateComparisonTaskByChoices
+## AudioTranscription.createComparisonTaskByChoices
 This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.
 
 | Field          | Type       | Description

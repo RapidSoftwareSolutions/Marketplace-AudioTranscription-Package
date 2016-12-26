@@ -47,7 +47,7 @@
             "JSON|metadata": "metadata"
         }
     },
-    "сreateComparisonTaskByFields": {
+    "createComparisonTaskByFields": {
         "url": "https://api.scaleapi.com/v1/task/comparison",
         "method": "POST",
         "args": {
@@ -62,7 +62,7 @@
             "JSON|metadata": "metadata"
         }
     },
-    "сreateComparisonTaskByChoices": {
+    "createComparisonTaskByChoices": {
         "url": "https://api.scaleapi.com/v1/task/comparison",
         "method": "POST",
         "args": {

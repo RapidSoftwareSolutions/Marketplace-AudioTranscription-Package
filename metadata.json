@@ -243,7 +243,7 @@
       ]
     },
     {
-      "name": "сreateComparisonTaskByFields",
+      "name": "createComparisonTaskByFields",
       "description": "This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.",
       "args": [
         {
@@ -313,7 +313,7 @@
       ]
     },
     {
-      "name": "сreateComparisonTaskByChoices",
+      "name": "createComparisonTaskByChoices",
       "description": "This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.",
       "args": [
         {
