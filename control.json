@@ -47,7 +47,22 @@
             "JSON|metadata": "metadata"
         }
     },
-    "createComparisonTask": {
+    "сreateComparisonTaskByFields": {
+        "url": "https://api.scaleapi.com/v1/task/comparison",
+        "method": "POST",
+        "args": {
+            "credentials|apiKey": "!$apiKey",
+            "String|callbackUrl": "$callback_url",
+            "String|instruction": "$instruction",
+            "String|attachmentType": "$attachment_type",
+            "JSON|attachments": "$attachments",
+            "String|urgency": "urgency",
+            "JSON|fields": "$fields",
+            "JSON|choices": "choices",
+            "JSON|metadata": "metadata"
+        }
+    },
+    "сreateComparisonTaskByChoices": {
         "url": "https://api.scaleapi.com/v1/task/comparison",
         "method": "POST",
         "args": {
@@ -58,7 +73,7 @@
             "JSON|attachments": "$attachments",
             "String|urgency": "urgency",
             "JSON|fields": "fields",
-            "JSON|choices": "choices",
+            "JSON|choices": "$choices",
             "JSON|metadata": "metadata"
         }
     },
