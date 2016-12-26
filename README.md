@@ -105,7 +105,7 @@ or
 	"key": "value"
 }
 ```
-## AudioTranscription.createComparisonTask
+## AudioTranscription.сreateComparisonTaskByFields
 This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.
 
 | Field          | Type       | Description
@@ -117,6 +117,38 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 | attachments    | JSON       | An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.
 | urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
 | fields         | String     | A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
+| metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
+
+#### `fields` field example:
+```json
+"fields": ["Field1", "Field2"] 
+or 
+"fields": {"Field1":"First field description", "Field2":"Second field description"}
+```
+#### `attachments` field example:
+```json
+"attachments": [
+  "http://i.ebayimg.com/00/$T2eC16dHJGwFFZKjy5ZjBRfNyMC4Ig~~_32.JPG",
+  "http://images.wisegeek.com/checkered-tablecloth.jpg"
+]
+```
+#### `metadata` field example:
+```json
+"metadata": {
+	"key": "value"
+}
+```
+## AudioTranscription.сreateComparisonTaskByChoices
+This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.
+
+| Field          | Type       | Description
+|----------------|------------|----------
+| apiKey         | credentials| Scale Application Key.
+| callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
+| instruction    | String     | A markdown-enabled string explaining how to compare the attachments. You can use markdown to show example images, give structure to your instructions, and more.
+| attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
+| attachments    | JSON       | An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.
+| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
 | choices        | JSON       | An array of strings for the choices to be given to the worker. One of choices or fields must be specified.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
@@ -137,6 +169,7 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 	"key": "value"
 }
 ```
+
 ## AudioTranscription.createAnnotationTask
 This endpoint creates an annotation task. In this task, one of our Scalers view the given image and draw bounding boxes around the specified objects, returning the positions and sizes of these boxes.
 
