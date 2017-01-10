@@ -53,7 +53,7 @@ for(let func in control) {
                 for(let val in values) opts[val + '|String'] = values[val];
 
             for(let arg in args) {
-                let argarr      = arg.split('|');
+                let argarr = arg.split('|');
                 opts[args[arg] + '|' + argarr[0]] = req.body.args[argarr[1]];
             }
 
