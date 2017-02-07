@@ -1,4 +1,8 @@
-# AudioTranscription Package
+[![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/AudioTranscription/functions?utm_source=RapidAPIGitHub_AudioTranscriptionFunctions&utm_medium=button&utm_content=RapidAPI_GitHub)
+
+# Scale Package
+
+Assign on-demand human workforce to different tasks.
 
 * Domain: https://www.scaleapi.com/audio-transcription
 * Credentials: apiKey
