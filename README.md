@@ -7,9 +7,20 @@ Assign on-demand human workforce to different tasks.
 * Domain: https://www.scaleapi.com/audio-transcription
 * Credentials: apiKey
 
-## How to get credentials: 
+## How to get credentials:
 0. Login to your [Scale API dashboard](https://dashboard.scaleapi.com/dashboard)
 1. Copy and save your `TEST API KEY` or `LIVE API KEY` for production.
+
+
+## Custom datatypes:
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]```
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+
 
 ## AudioTranscription.createCategorizationTask
 This endpoint creates a categorization task. In this task, one of our workers will view the attachment and choose a category for it according to the instruction. You may allow multiple categories to be chosen by setting allow_multiple to true. Example use cases are spam detection, copyright detection, product categorization, etc.
@@ -19,10 +30,10 @@ This endpoint creates a categorization task. In this task, one of our workers wi
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme http:// or https://) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to categorize the item. You can use markdown to show example images, give structure to your instructions, and more.
-| attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
+| attachmentType | Select     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
 | attachment     | File       | The attachment to be categorized. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be FILE a URL pointing to the attachment.
-| categories     | JSON       | An array of strings for the categories which you’d like the object to be sorted between.
-| urgency        | String     | Default is `day`. A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time.
+| categories     | List       | An array of strings for the categories which you’d like the object to be sorted between.
+| urgency        | Select     | Default is `day`. A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time.
 | categoryIds    | JSON       | An optional dictionary where the keys are the optional ids, and the values are the category values provided in categories.
 | allowMultiple  | Boolean    | Default is `false`. Determines whether you allow multiple categories to be chosen for the attachment
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
@@ -53,10 +64,10 @@ This endpoint creates a transcription task. In this task, one of our workers wil
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to transcribe the attachment. You can use markdown to show example images, give structure to your instructions, and more.
-| attachmentType | String     | One of `image` or `pdf`. Describes what type of file the attachment is.
+| attachmentType | Select     | One of `image` or `pdf`. Describes what type of file the attachment is.
 | attachment     | File       | Should be a FILE or URL pointing to the attachment.
 | fields         | JSON       | A dictionary corresponding to the fields to be transcribed. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
-| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
+| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
 #### `fields` field example:
@@ -83,11 +94,11 @@ This endpoint creates a phonecall task. In this task, one of our workers will ca
 | phoneNumber    | String     | The phone number which will be called by our worker. Should include a country code (+1 for US numbers).
 | script         | String     | A script to be shown the the worker as they make the phone call. Your script will greatly impact the quality of the results you receive.
 | entityName     | String     | The name of the entity which corresponds to the person or business of the phone number.
-| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
-| attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
+| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
+| attachmentType | Select     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
 | attachment     | File       | The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.
 | fields         | JSON       | A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
-| choices        | JSON       | An array of strings for the choices to be given to the worker. They will choose one of these in accordance with your instruction.
+| choices        | List       | An array of strings for the choices to be given to the worker. They will choose one of these in accordance with your instruction.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
 #### `choices` field example:
@@ -97,8 +108,8 @@ This endpoint creates a phonecall task. In this task, one of our workers will ca
 
 #### `fields` field example:
 ```json
-"fields": ["Field1", "Field2"] 
-or 
+"fields": ["Field1", "Field2"]
+or
 "fields": {"Field1":"First field description", "Field2":"Second field description"}
 
 
@@ -117,16 +128,16 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to compare the attachments. You can use markdown to show example images, give structure to your instructions, and more.
-| attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
-| attachments    | JSON       | An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.
-| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
+| attachmentType | Select     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
+| attachments    | List       | An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.
+| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
 | fields         | String     | A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
 #### `fields` field example:
 ```json
-"fields": ["Field1", "Field2"] 
-or 
+"fields": ["Field1", "Field2"]
+or
 "fields": {"Field1":"First field description", "Field2":"Second field description"}
 ```
 #### `attachments` field example:
@@ -150,10 +161,10 @@ This endpoint creates a comparison task. In this task, one of our workers view t
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to compare the attachments. You can use markdown to show example images, give structure to your instructions, and more.
-| attachmentType | String     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
-| attachments    | JSON       | An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.
-| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
-| choices        | JSON       | An array of strings for the choices to be given to the worker. One of choices or fields must be specified.
+| attachmentType | Select     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
+| attachments    | List       | An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.
+| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.
+| choices        | List       | An array of strings for the choices to be given to the worker. One of choices or fields must be specified.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
 #### `choices` field example:
@@ -181,10 +192,10 @@ This endpoint creates an annotation task. In this task, one of our Scalers view 
 |----------------------|------------|----------
 | apiKey               | credentials| Scale Application Key.
 | callbackUrl          | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
-| objectsToAnnotate    | JSON       | An array of strings describing which objects you’d like bounding boxes to be drawn around. Each string should be singular and self-descriptive (ex: “cat”, “street sign”, “potato”). You may include at most 6 objects.
+| objectsToAnnotate    | List       | An array of strings describing which objects you’d like bounding boxes to be drawn around. Each string should be singular and self-descriptive (ex: “cat”, “street sign”, “potato”). You may include at most 6 objects.
 | attachment           | File       | A Image file or URL to the image you’d like to be annotated with bounding boxes.
 | withLabels           | Boolean    | Specifies whether you’d like labels for each bounding box in the response. Each label will be a member of the `objectsToAnnotate` array.
-| examples             | JSON       | A list of examples. Each example requires a correct boolean indicating whether it is a correct or incorrect example and an image URL to the example image. Optionally, provide an explanation for the example explaining why it is correct or incorrect.
+| examples             | List       | A list of examples. Each example requires a correct boolean indicating whether it is a correct or incorrect example and an image URL to the example image. Optionally, provide an explanation for the example explaining why it is correct or incorrect.
 | urgency              | String     | A string describing the urgency of the response. One of immediate, day, or week, where immediate is a one-hour response time.
 | instruction          | String     | A markdown-enabled string explaining how to draw the bounding boxes. You can use markdown to show example images, give structure to your instructions, and more.
 | metadata             | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
@@ -221,10 +232,10 @@ This endpoint creates a datacollection task. In this task, one of our workers wi
 | apiKey         | credentials| Scale Application Key.
 | callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
 | instruction    | String     | A markdown-enabled string explaining how to draw the bounding boxes. You can use markdown to show example images, give structure to your instructions, and more.
-| attachmentType | String     | One of `text`, `image`, `website`. Describes what type of file the attachment is.
+| attachmentType | Select     | One of `text`, `image`, `website`. Describes what type of file the attachment is.
 | attachment     | File       | The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.
 | fields         | JSON       | A dictionary corresponding to the fields of information to be collected. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
-| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time. Default is `day`.
+| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time. Default is `day`.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
 #### `fields` field example:
@@ -249,7 +260,7 @@ This endpoint creates an audiotranscription task. In this task, we will transcri
 | instruction    | String     | A markdown-enabled string explaining how to draw the bounding boxes. You can use markdown to show example images, give structure to your instructions, and more.
 | attachment     | File       | An audio file or URL pointing to the audio file attachment.
 | verbatim       | Boolean    | Specifies whether or not to include non-words (ex: “um”, “hm”) in the transcript. Default is false.
-| urgency        | String     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
+| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
 | metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
 
 #### `metadata` field example:
@@ -281,10 +292,9 @@ This is a paged endpoint retrieves a list of your tasks. The tasks will be retur
 | Field     | Type       | Description
 |-----------|------------|----------
 | apiKey    | credentials| Scale Application Key.
-| startTime | String     | ISO 8601 Date. The minimum value of `createdAt` for tasks to be returned.
-| endTime   | String     | ISO 8601 Date. The maximum value of `createdAt` for tasks to be returned.
-| status    | String     | The status of the task - can be: `completed`, `pending`, or `canceled`.
-| type      | String     | The type of the task - can be: `transcription`, `categorization`, `phonecall`, `comparison`, `annotation`, `datacollection`, or any other task type. 
+| startTime | DatePicker     | ISO 8601 Date. The minimum value of `createdAt` for tasks to be returned.
+| endTime   | DatePicker     | ISO 8601 Date. The maximum value of `createdAt` for tasks to be returned.
+| status    | Select     | The status of the task - can be: `completed`, `pending`, or `canceled`.
+| type      | String     | The type of the task - can be: `transcription`, `categorization`, `phonecall`, `comparison`, `annotation`, `datacollection`, or any other task type.
 | limit     | Number     | A number between 1 and 100, the maximum number of results to display per page.
 | offset    | Number     | The number of results to skip, for showing the next page.
-

@@ -38,7 +38,8 @@
         },
         {
           "name": "attachmentType",
-          "type": "String",
+          "type": "Select",
+          "options":["text", "image", "video", "audio", "website", "pdf"],
           "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
           "required": true
         },
@@ -50,13 +51,19 @@
         },
         {
           "name": "categories",
-          "type": "JSON",
+          "type": "list",
+          "structure": {
+            "name": "category",
+            "type": "JSON",
+            "info": "Single category"
+          },
           "info": "An array of strings for the categories which you’d like the object to be sorted between.",
           "required": true
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "Default if `day`. A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time.",
           "required": false
         },
@@ -114,7 +121,8 @@
         },
         {
           "name": "attachmentType",
-          "type": "String",
+          "type": "Select",
+          "options":["image", "pdf"],
           "info": "One of `image` or `pdf`. Describes what type of file the attachment is.",
           "required": true
         },
@@ -132,7 +140,8 @@
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.",
           "required": false
         },
@@ -196,13 +205,15 @@
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.",
           "required": false
         },
         {
           "name": "attachmentType",
-          "type": "String",
+          "type": "Select",
+          "options":["text", "image", "video", "audio", "website", "pdf"],
           "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
           "required": false
         },
@@ -220,7 +231,12 @@
         },
         {
           "name": "choices",
-          "type": "JSON",
+          "type": "list",
+          "structure": {
+            "name": "choice",
+            "type": "JSON",
+            "info": "Single choice"
+          },
           "info": "An array of strings for the choices to be given to the worker. They will choose one of these in accordance with your instruction.",
           "required": false
         },
@@ -266,19 +282,26 @@
         },
         {
           "name": "attachmentType",
-          "type": "String",
+          "type": "Select",
+          "options":["text", "image", "video", "audio", "website", "pdf"],
           "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
           "required": true
         },
         {
           "name": "attachments",
-          "type": "JSON",
+          "type": "List",
+          "structure" : {
+            "name": "attachment",
+           "type": "String",
+           "info": "Single attachment"
+          },
           "info": "An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.",
           "required": true
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.",
           "required": false
         },
@@ -288,12 +311,7 @@
           "info": "A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
           "required": true
         },
-        {
-          "name": "choices",
-          "type": "JSON",
-          "info": "An array of strings for the choices to be given to the worker. One of choices or fields must be specified.",
-          "required": false
-        },
+
         {
           "name": "metadata",
           "type": "JSON",
@@ -336,32 +354,39 @@
         },
         {
           "name": "attachmentType",
-          "type": "String",
+          "type": "Select",
+          "options":["text", "image", "video", "audio", "website", "pdf"],
           "info": "One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.",
           "required": true
         },
         {
           "name": "attachments",
-          "type": "JSON",
+          "type": "List",
+          "structure" : {
+            "name": "attachment",
+           "type": "String",
+           "info": "Single attachment"
+          },
           "info": "An array of attachments to compare. If attachment_type is text, then each attachment should be plaintext. Otherwise, they should be URLs pointing to the attachments.",
           "required": true
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one hour response time.",
           "required": false
         },
-        {
-          "name": "fields",
-          "type": "JSON",
-          "info": "A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.",
-          "required": false
-        },
+
         {
           "name": "choices",
-          "type": "JSON",
-          "info": "An array of strings for the choices to be given to the worker. One of choices or fields must be specified.",
+          "type": "List",
+          "structure" : {
+            "name": "choice",
+           "type": "String",
+           "info": "Single choice"
+          },
+          "info": "An array of strings for the choices to be given to the worker. ",
           "required": true
         },
         {
@@ -400,7 +425,12 @@
         },
         {
           "name": "objectsToAnnotate",
-          "type": "JSON",
+          "type": "List",
+          "structure" : {
+            "name": "objectToAnnotate",
+           "type": "String",
+           "info": "Single objectToAnnotate"
+          },
           "info": "An array of strings describing which objects you’d like bounding boxes to be drawn around. Each string should be singular and self-descriptive (ex: “cat”, “street sign”, “potato”). You may include at most 6 objects.",
           "required": true
         },
@@ -418,13 +448,19 @@
         },
         {
           "name": "examples",
-          "type": "JSON",
+          "type": "List",
+          "structure" : {
+            "name": "example",
+           "type": "JSON",
+           "info": "Single example"
+          },
           "info": "A list of examples. Each example requires a correct boolean indicating whether it is a correct or incorrect example and an image URL to the example image. Optionally, provide an explanation for the example explaining why it is correct or incorrect.",
           "required": false
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of immediate, day, or week, where immediate is a one-hour response time.",
           "required": false
         },
@@ -476,7 +512,8 @@
         },
         {
           "name": "attachmentType",
-          "type": "String",
+          "type": "Select",
+          "options":["text", "image", "website"],
           "info": "One of `text`, `image`, `website`. Describes what type of file the attachment is.",
           "required": true
         },
@@ -494,7 +531,8 @@
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where immediate is a one-hour response time. Default is `day`.",
           "required": false
         },
@@ -552,7 +590,8 @@
         },
         {
           "name": "urgency",
-          "type": "String",
+          "type": "Select",
+          "options":["immediate", "day", "week"],
           "info": "A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.",
           "required": false
         },
@@ -642,19 +681,20 @@
         },
         {
           "name": "startTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "ISO 8601 Date. The minimum value of `createdAt` for tasks to be returned.",
           "required": false
         },
         {
           "name": "endTime",
-          "type": "String",
+          "type": "DatePicker",
           "info": "ISO 8601 Date. The maximum value of `createdAt` for tasks to be returned.",
           "required": false
         },
         {
           "name": "status",
-          "type": "String",
+          "type": "Select",
+          "options":["completed", "pending", "canceled"],
           "info": "The status of the task - can be: `completed`, `pending`, or `canceled`.",
           "required": false
         },

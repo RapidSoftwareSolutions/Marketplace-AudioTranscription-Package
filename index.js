@@ -1,5 +1,6 @@
 "use strict";
 global.PACKAGE_NAME = 'AudioTranscription';
+var datetime = require('node-datetime');
 
 const express       = require('express'),
     bodyParser      = require('body-parser'),
@@ -30,7 +31,7 @@ for(let func in control) {
     };
 
     let {
-        method, 
+        method,
         args,
         values,
         tree,
@@ -38,7 +39,7 @@ for(let func in control) {
     } = control[func];
 
     app.post(`/api/${PACKAGE_NAME}/${func}`, _(function* (req, res) {
-        console.log(func)
+
         let response;
         let opts = {};
         let r    = {
@@ -47,6 +48,12 @@ for(let func in control) {
         };
 
         req.body.args = lib.clearArgs(req.body.args);
+
+        let startTime =datetime.create(req.body.args.startTime);
+        req.body.args.startTime = startTime.format('Y-m-d\TH:M:S\Z');
+
+        let endTime =datetime.create(req.body.args.endTime);
+        req.body.args.endTime = endTime.format('Y-m-d\TH:M:S\Z');
 
         try {
             if(values)
@@ -62,8 +69,8 @@ for(let func in control) {
             options.method = method;
 
             response = yield new API(url).auth({
-                type: 'basic', 
-                username: req.body.args['apiKey'], 
+                type: 'basic',
+                username: req.body.args['apiKey'],
                 password: ''})
             .request(options);
 
