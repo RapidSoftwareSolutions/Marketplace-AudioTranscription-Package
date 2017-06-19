@@ -29,24 +29,7 @@
             "JSON|metadata": "metadata"
         }
     },
-    "createPhoneCallTask": {
-        "url": "https://api.scaleapi.com/v1/task/phonecall",
-        "method": "POST",
-        "args": {
-            "credentials|apiKey": "!$apiKey",
-            "String|callbackUrl": "$callback_url",
-            "String|instruction": "$instruction",
-            "String|phoneNumber": "$phone_number",
-            "String|script": "$script",
-            "String|entityName": "$entity_name",
-            "String|urgency": "urgency",
-            "String|attachmentType": "$attachment_type",
-            "File|attachment": "$attachments",
-            "JSON|fields": "fields",
-            "JSON|choices": "choices",
-            "JSON|metadata": "metadata"
-        }
-    },
+  
     "createComparisonTaskByFields": {
         "url": "https://api.scaleapi.com/v1/task/comparison",
         "method": "POST",

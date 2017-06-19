@@ -83,43 +83,6 @@ or
 }
 ```
 
-## AudioTranscription.createPhoneCallTask
-This endpoint creates a phonecall task. In this task, one of our workers will call the specified phone number and follow the instructions. Potential use cases could be making reservations or appointments, confirming reservations, asking for contact numbers or emails, etc.
-
-| Field          | Type       | Description
-|----------------|------------|----------
-| apiKey         | credentials| Scale Application Key.
-| callbackUrl    | String     | The full url (including the scheme `http://` or `https://`) of the callback when the task is completed.
-| instruction    | String     | A markdown-enabled string explaining how to complete the phone call. You can use markdown to show example images, give structure to your instructions, and more.
-| phoneNumber    | String     | The phone number which will be called by our worker. Should include a country code (+1 for US numbers).
-| script         | String     | A script to be shown the the worker as they make the phone call. Your script will greatly impact the quality of the results you receive.
-| entityName     | String     | The name of the entity which corresponds to the person or business of the phone number.
-| urgency        | Select     | A string describing the urgency of the response. One of `immediate`, `day`, or `week`, where `immediate` is a one-hour response time.
-| attachmentType | Select     | One of `text`, `image`, `video`, `audio`, `website`, or `pdf`. Describes what type of file the attachment is.
-| attachment     | File       | The optional attachment to be used for the phone call. If `attachmentType` is text, then it should be plaintext. Otherwise, it should be a FILE or URL pointing to the attachment.
-| fields         | JSON       | A dictionary corresponding to the fields to be recorded. Keys are the keys you’d like the fields to be returned under, and values are descriptions to be shown to human workers.
-| choices        | List       | An array of strings for the choices to be given to the worker. They will choose one of these in accordance with your instruction.
-| metadata       | JSON       | A set of key/value pairs that you can attach to a task object. It can be useful for storing additional information about the task in a structured format.
-
-#### `choices` field example:
-```json
-"choices": ["Yes", "No"]
-```
-
-#### `fields` field example:
-```json
-"fields": ["Field1", "Field2"]
-or
-"fields": {"Field1":"First field description", "Field2":"Second field description"}
-
-
-```
-#### `metadata` field example:
-```json
-"metadata": {
-	"key": "value"
-}
-```
 ## AudioTranscription.createComparisonTaskByFields
 This endpoint creates a comparison task. In this task, one of our workers view the given attachments and do any comparison requested.
 
