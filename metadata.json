@@ -51,7 +51,7 @@
         },
         {
           "name": "categories",
-          "type": "list",
+          "type": "List",
           "structure": {
             "name": "category",
             "type": "JSON",
