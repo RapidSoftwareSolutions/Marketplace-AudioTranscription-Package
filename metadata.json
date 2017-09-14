@@ -13,6 +13,10 @@
       "apiKey"
     ]
   },
+  "steps": [
+    "Login to your Scale API dashboard",
+    "Copy and save your TEST API KEY for testing or LIVE API KEY for production."
+  ],
   "blocks": [
     {
       "name": "createCategorizationTask",
